@@ -5,13 +5,15 @@ import com.rp.sec01.assignment.FileService;
 
 public class Lec09AssignmentDemo {
 
-	public static void main(String[] args)
+	public static void main(String[] args) throws InterruptedException
 	{
 		
 		FileService.delete("file01.txt")
 		.subscribe(Util.onNext(), Util.onError(), Util.onComplete());
-		
+		//this is still blocking!
 		;
+		
+		Thread.sleep(7000);
 		
 		FileService.read("file03.txt")
 		.subscribe(Util.onNext(), Util.onError(), Util.onComplete());
